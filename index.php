@@ -6,8 +6,17 @@
  * Time: PM 12:35
  */
 
-echo rand(1, 100);
 
+$string = file_get_contents("menu.json");
+$json_a = json_decode($string, true);
+foreach ($json_a as $person_name => $person_a) {
+    echo $person_a['status'];
+}
 ?>
-<p>https://material.io/design/</p>
+<article>
+    <ul>
+        <li><p>https://material.io/design/</p></li>
+    </ul>
+</article>
+
 
