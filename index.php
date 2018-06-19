@@ -6,7 +6,12 @@
         echo $person_a['status'];
     }
     print("<br>");
-    echo getcwd().'<br>';
+    echo getcwd() . '<br>';
+
+    echo getcwd() . '<br>';
+    $files = 'https://www.yeshtml5.com';
+    var_dump(scandir($files, 1));
+
 ?>
 <?php head(); ?>
     <!--contents-->
