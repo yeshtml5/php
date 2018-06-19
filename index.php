@@ -1,22 +1,18 @@
+<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/php/inc/common.inc"); ?>
 <?php
-/**
- * Created by PhpStorm.
- * User: bos
- * Date: 2018. 6. 18.
- * Time: PM 12:35
- */
-
-
-$string = file_get_contents("menu.json");
-$json_a = json_decode($string, true);
-foreach ($json_a as $person_name => $person_a) {
-    echo $person_a['status'];
-}
+    $string = file_get_contents("menu.json");
+    $json_a = json_decode($string, true);
+    foreach ($json_a as $person_name => $person_a) {
+        echo $person_a['status'];
+    }
+    print("<br>");
 ?>
-<article>
-    <ul>
-        <li><p>https://material.io/design/</p></li>
-    </ul>
-</article>
-
-
+<?php header(); ?>
+    <!--contents-->
+    <article>
+        <ul>
+            <li><p>https://material.io/design/</p></li>
+        </ul>
+    </article>
+    <!--//contents-->
+<?php footer(); ?>
