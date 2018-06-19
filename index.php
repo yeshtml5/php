@@ -6,8 +6,9 @@
         echo $person_a['status'];
     }
     print("<br>");
+    echo getcwd().'<br>';
 ?>
-<?php header(); ?>
+<?php head(); ?>
     <!--contents-->
     <article>
         <ul>
