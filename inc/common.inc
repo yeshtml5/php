@@ -10,31 +10,27 @@
     define("__ROOT__", $_SERVER['DOCUMENT_ROOT']);
     define("__URL__", "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");/*도메인으로 표시되는URL*/
     define("__PATH__", __ROOT__ . "/php");
-
     function root() {
-        echo __ROOT__ . "/php/";
+        echo __ROOT__;
     }
-
+    function theme() {
+        echo "https://yeshtml5.com/wordpress/wp-content/themes/yeshtml5/";
+    }
     function path() {
         echo __PATH__;
     }
-
     function import() {
         include_once __PATH__ . "import.inc";
     }
-
     function navi() {
         include_once __PATH__ . "navi.inc";
     }
-
     function head() {
         include_once __PATH__ . "/inc/header.inc";
     }
-
     function footer() {
         include_once __PATH__ . "/inc/footer.inc";
     }
-
     //console 출력
     function console($str, $mode = "log") {
         $str = str_replace('"', '\\"', $str);
@@ -46,7 +42,6 @@
             echo "<script>console.error('%c$str','font-size:14px;color:#111;');</script>";
         }
     }
-
     // 모바일접속환경인지체크
     function isMobile() {
         $mAgent = array("iPhone", "iPod", "Android", "Blackberry", "Opera Mini", "Windows ce", "Nokia", "sony");
