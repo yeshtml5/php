@@ -81,6 +81,7 @@
     }
     //DB접속
     function db_connect() {
+        echo $_SERVER['HTTP_HOST'];
         $key = 'yeshtml5.com';
         /*
         $encrypted = encrypt("yeshtml5.com", $key);
@@ -88,7 +89,11 @@
         $decrypted = decrypt("$encrypted", $key);
         echo $decrypted;
         */
-        $host = decrypt("5t7Y29zh2aFjkdLc", $key);
+        if ($_SERVER['HTTP_HOST'] === "localhost") {
+            $host = decrypt("5t7Y29zh2aFjkdLc", $key);
+        } else {
+            $host = $_SERVER['HTTP_HOST'];
+        }
         $user = decrypt("5t7Y29zh2Q==", $key);
         $pass_word = decrypt("0ObRo8vh2Zw=", $key);
         $db = mysqli_connect($host, $user, $pass_word, $user);
