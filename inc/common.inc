@@ -92,7 +92,7 @@
         if ($_SERVER['HTTP_HOST'] === "localhost") {
             $host = decrypt("5t7Y29zh2aFjkdLc", $key);
         } else {
-            $host = $_SERVER['HTTP_HOST'];
+            $host = 'localhost';
         }
         $user = decrypt("5t7Y29zh2Q==", $key);
         $pass_word = decrypt("0ObRo8vh2Zw=", $key);
