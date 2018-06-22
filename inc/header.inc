@@ -14,7 +14,7 @@
 
     <!--[javascript]-->
     <script type="text/javascript" src="<?php theme(); ?>src/js/jquery.js"></script>
-    <script type="text/javascript" src="<?php theme(); ?>src/js/masonry.js"></script>
+    <script type="text/javascript" src="<?php theme(); ?>src/js/lib.masonry.js"></script>
     <script type="text/javascript" src="<?php theme(); ?>src/js/core.js"></script>
     <script type="text/javascript" src="<?php theme(); ?>src/js/common.js"></script>
 </head>

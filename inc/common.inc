@@ -31,6 +31,9 @@
     function footer() {
         include_once __PATH__ . "/inc/footer.inc";
     }
+    function getRemoteIp() {
+        echo $_SERVER['REMOTE_ADDR'];
+    }
     //console 출력
     function console($str, $mode = "log") {
         $str = str_replace('"', '\\"', $str);
@@ -54,6 +57,67 @@
         }
         return $chkMobile;
     }
-
     /*********************************************************************/
-
+    function encrypt($string, $key) {
+        $result = '';
+        for ($i = 0; $i < strlen($string); $i++) {
+            $char = substr($string, $i, 1);
+            $keychar = substr($key, ($i % strlen($key)) - 1, 1);
+            $char = chr(ord($char) + ord($keychar));
+            $result .= $char;
+        }
+        return base64_encode($result);
+    }
+    function decrypt($string, $key) {
+        $result = '';
+        $string = base64_decode($string);
+        for ($i = 0; $i < strlen($string); $i++) {
+            $char = substr($string, $i, 1);
+            $keychar = substr($key, ($i % strlen($key)) - 1, 1);
+            $char = chr(ord($char) - ord($keychar));
+            $result .= $char;
+        }
+        return $result;
+    }
+    //DB접속
+    function db_connect() {
+        $key = 'yeshtml5.com';
+        /*
+        $encrypted = encrypt("yeshtml5.com", $key);
+        echo $encrypted."<br>";
+        $decrypted = decrypt("$encrypted", $key);
+        echo $decrypted;
+        */
+        $host = decrypt("5t7Y29zh2aFjkdLc", $key);
+        $user = decrypt("5t7Y29zh2Q==", $key);
+        $pass_word = decrypt("0ObRo8vh2Zw=", $key);
+        $db = mysqli_connect($host, $user, $pass_word, $user);
+        if ($db) {
+            console('ok');
+        } else {
+            console("db fail", "error");
+        }
+        return $db;
+        /*
+         * @example)
+            $db = db_connect();
+            $query = "SELECT * FROM `wp_users` ";
+            $result = mysqli_query($db, $query);
+            $data = mysqli_fetch_assoc($result);
+         */
+    }
+    function db_query($_query) {
+        $db = db_connect();
+        $result = mysqli_query($db, $_query);
+        return mysqli_fetch_assoc($result);
+    }
+    /*
+    $str = "안녕하세요. 하보니입니다.";
+    $secret_key = "123456789";
+    $secret_iv = "#@$%^&*()_+=-";
+    $encrypted = Encrypt($str, $secret_key, $secret_iv);
+    echo "암호화 문자열 => " . $encrypted . "<br />\n";
+    $decrypted = Decrypt($encrypted, $secret_key, $secret_iv);
+    echo "복호화 문자열 => " . $decrypted . "\n";
+    */
+?>
