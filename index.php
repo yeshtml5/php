@@ -6,7 +6,7 @@
 </article>
 <section>
     <ul>
-        <li><a href="/php/module/bookmark" target="_blank">즐겨찾기</a></li>
+        <li><a href="/php/module/bookmark">즐겨찾기</a></li>
         <li><a href="/php/memo/" target="_blank">메모장</a></li>
         <li><a href="https://opentutorials.org/course/3167/19600" target="_blank">https://opentutorials.org/course/3167/19600</a>
         </li>
