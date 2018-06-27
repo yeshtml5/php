@@ -2,21 +2,34 @@
 <?php
     /*------[config]--------*/
     $DB_TABLE = 'php_bookmark';
+    $submit_label = 'INSERT';
+    $escaped['memo'] = null;
+    $escaped['url'] = null;
     /*------[function]--------*/
     function reload() {
         echo "<script>window.location = \"/php/module/bookmark/\";</script>";
     }
-    if (isset($_POST['submit']) && $_POST['submit'] == "INSERT"):/*------[CREATE]--------*/
+    /*------[logic]--------*/
+    if (isset($_POST['submit']) && $_POST['submit'] == "INSERT"):/*------[INSERT]--------*/
         $sql = "INSERT INTO $DB_TABLE (`id`,`memo`,`url`,`date`,`favorite`) VALUES (null, '{$_POST['memo']}', '{$_POST['url']}', '', 'N')";
         $result = db_query($sql);
         reload();
     elseif (isset($_POST['submit']) && $_POST['submit'] == "DELETE"):/*------[DELETE]--------*/
-        $id = $_POST['row_id'];
-        $sql = "DELETE FROM $DB_TABLE WHERE `php_bookmark`.`id` = {$id}";
+        $sql = "DELETE FROM $DB_TABLE WHERE `php_bookmark`.`id` = '{$_POST['row_id']}'";
         $result = db_query($sql);
         reload();
-    elseif (isset($_POST['submit']) && $_POST['submit'] == "UPDATE"):/*------[UPDATE]--------*/
+    elseif (isset($_POST['submit']) && $_POST['submit'] == "MODIFY"):/*------[UPDATE]--------*/
         //---
+        $submit_label = 'UPDATE';
+        $sql = "SELECT * FROM $DB_TABLE WHERE id={$_POST['row_id']}";
+        $result = db_query($sql);
+        $row = mysqli_fetch_array($result);
+        $escaped['memo'] = htmlspecialchars($row['memo']);
+        $escaped['url'] = htmlspecialchars($row['url']);
+    elseif (isset($_POST['submit']) && $_POST['submit'] == "UPDATE"):/*------[UPDATE]--------*/
+        $sql = "UPDATE $DB_TABLE SET `memo` = '{$_POST['memo']}', `url` = '{$_POST['url']}' WHERE id='{$_POST['row_id']}'";
+        $result = db_query($sql);
+        reload();
     else:
         //---
     endif;
@@ -30,12 +43,13 @@
     <section>
         <div class="bookmark">
             <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
-                <input type="text" name="memo" placeholder="memo">
-                <input type="text" name="url" placeholder="url">
-                <input type="submit" name="submit" value="INSERT">
+                <input type="hidden" name="row_id" value="<?= $row['id']; ?>">
+                <input type="text" name="memo" placeholder="memo" value="<?= $escaped['memo']; ?>">
+                <input type="text" name="url" placeholder="url" value="<?= $escaped['url']; ?>">
+                <input type="submit" name="submit" value="<?= $submit_label; ?>">
             </form>
             <?php while ($row = mysqli_fetch_array($result)): ?>
-                <dl data-id="<?= $row['id']; ?>">
+                <dl>
                     <dt><input type="checkbox" <?php if ($row['favorite'] == "Y") {
                             echo "checked = 'checked'";
                         } ?> ></dt>
@@ -46,14 +60,15 @@
                         <dd>
                             <input type="hidden" name="row_id" value="<?= $row['id']; ?>">
                             <input type="submit" name="submit" value="DELETE">
+                            <input type="submit" name="submit" value="MODIFY">
+
+                            <?= $row['id']; ?>
                         </dd>
                     </form>
                 </dl>
             <?php endwhile; ?>
         </div>
     </section>
-    <!--input[type="hidden"]-->
-    <input type="hidden" name="form_mode" value="list">
 </article>
 <!--//contents-->
 <?php footer(); ?>
