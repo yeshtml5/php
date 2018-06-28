@@ -30,7 +30,8 @@
         $escaped['favorite'] = htmlspecialchars($row['favorite']);
         var_dump($escaped['favorite']);
     elseif (isset($_POST['submit']) && $_POST['submit'] == "UPDATE"):/*------[UPDATE]--------*/
-        $sql = "UPDATE $DB_TABLE SET `memo` = '{$_POST['memo']}', `url` = '{$_POST['url']}',`favorite` = '{$_POST['row_checked']}' WHERE id='{$_POST['row_id']}'";
+        $now = date('Y-m-d H:i:s');
+        $sql = "UPDATE $DB_TABLE SET `memo` = '{$_POST['memo']}', `url` = '{$_POST['url']}',`favorite` = '{$_POST['row_checked']}',`date` = '{$now}' WHERE id='{$_POST['row_id']}'";
         $result = db_query($sql);
         reload();
     else:
@@ -61,7 +62,9 @@
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
                     <?php if (isset($row)) : ?>
                         <input type="hidden" name="row_id" value="<?= $row['id']; ?>">
-                        <input type="checkbox" name="row_checked" <?php if ($row['favorite'] == "on") {echo "checked = 'checked'";} ?> >
+                        <input type="checkbox" name="row_checked" <?php if ($row['favorite'] == "on") {
+                            echo "checked = 'checked'";
+                        } ?> >
                     <?php endif; ?>
                     <input type="text" name="memo" placeholder="memo" value="<?= $escaped['memo']; ?>">
                     <input type="text" name="url" placeholder="url" value="<?= $escaped['url']; ?>">
