@@ -115,13 +115,6 @@
             console("db fail", "error");
         }
         return $db;
-        /*
-         * @example)
-            $db = db_connect();
-            $query = "SELECT * FROM `wp_users` ";
-            $result = mysqli_query($db, $query);
-            $data = mysqli_fetch_assoc($result);
-         */
     }
     function db_query($_query) {
         $db = db_connect();

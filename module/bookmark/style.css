@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+/*------------------ [bookmark] ------------------*/
+.bookmark-wrap {display:block;width:800px;margin:50px auto;}
+.bookmark-wrap .cont {width:100%;}
+.bookmark-wrap .cont dl {position:relative;}
+.bookmark-wrap .cont dl:nth-child(2n) {background:#ccd6dc;}
+.bookmark-wrap .cont dl > * {display:inline-block;padding:5px 10px;}
+.bookmark-wrap .cont dl dd a:hover {color:#ff0000;}
+.bookmark-wrap .cont dl dd.btn-wrap {position:absolute;top:50%;transform:translateY(-50%);right:10px;}
