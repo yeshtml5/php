@@ -12,7 +12,9 @@
     /*------[logic]--------*/
     if (isset($_POST['submit']) && $_POST['submit'] == "INSERT"):/*------[INSERT]--------*/
         $now = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO $DB_TABLE (`id`,`memo`,`url`,`date`,`favorite`) VALUES (null, '{$_POST['memo']}', '{$_POST['url']}', '{$now}', 'N')";
+        $escaped['memo'] = htmlspecialchars($_POST['memo']);
+        $escaped['url'] = htmlspecialchars($_POST['url']);
+        $sql = "INSERT INTO $DB_TABLE (`id`,`memo`,`url`,`date`,`favorite`) VALUES (null, '{$escaped['memo']}', '{$escaped['url']}', '{$now}', 'N')";
         $result = db_query($sql);
         reload();
     elseif (isset($_POST['submit']) && $_POST['submit'] == "DELETE"):/*------[DELETE]--------*/
@@ -28,7 +30,6 @@
         $escaped['memo'] = htmlspecialchars($row['memo']);
         $escaped['url'] = htmlspecialchars($row['url']);
         $escaped['favorite'] = htmlspecialchars($row['favorite']);
-        var_dump($escaped['favorite']);
     elseif (isset($_POST['submit']) && $_POST['submit'] == "UPDATE"):/*------[UPDATE]--------*/
         $now = date('Y-m-d H:i:s');
         $sql = "UPDATE $DB_TABLE SET `memo` = '{$_POST['memo']}', `url` = '{$_POST['url']}',`favorite` = '{$_POST['row_checked']}',`date` = '{$now}' WHERE id='{$_POST['row_id']}'";
@@ -48,9 +49,9 @@
     <!--[script]-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
     <!--[style]-->
-    <link type="text/css" rel="stylesheet" href="<?php theme(); ?>src/css/fontawesome.css"/>
-    <link type="text/css" rel="stylesheet" href="<?php theme(); ?>src/css/basic.css"/>
-    <link type="text/css" rel="stylesheet" href="<?php theme(); ?>src/css/common.css"/>
+    <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/fontawesome.css"/>
+    <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/basic.css"/>
+    <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/common.css"/>
     <link type="text/css" rel="stylesheet" href="style.css"/>
 </head>
 <body>
