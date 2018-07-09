@@ -4,7 +4,7 @@
     $date->setTimezone(new DateTimeZone('Asia/Seoul'));
     $mode = $_GET['mode'];
     if ($_GET['mode'] == 'time'):
-        echo $date->format('h:i:sA');
+        echo $date->format('h:i:s A');
     else:
         echo $date->format('Y-m-d h:i:sA');
     endif;

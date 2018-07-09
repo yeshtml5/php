@@ -24,8 +24,5 @@
         </ul>
     </section>
 </article>
-
-
-
 <!--//contents-->
 <?= footer(); ?>

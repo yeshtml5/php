@@ -14,7 +14,7 @@ header nav {display:block;padding:20px;color:#fff;}
 header nav a {position:relative;display:block;padding:5px 10px;font-size:14px; }
 header nav a:hover {text-decoration:underline;}
 header nav a:after { position:absolute;right:0;content:'>';}
-header nav dl {margin-bottom:50px;}
+header nav dl {margin-bottom:30px;}
 header nav dl dt {display:block;margin-bottom:10px;padding:10px;border-bottom:1px solid #fff;font-size:18px;}
 /*===[article]===============================================*/
 body > article {width:100%;padding-left:250px;box-sizing:border-box;}
