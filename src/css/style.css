@@ -6,14 +6,14 @@ body {position:relative;background:#e8e8e8;}
 /*---[tesxt]---*/
 
 /*===[header]===============================================*/
-header {position:fixed;width:250px;height:100%;background:#414755; box-sizing:border-box; z-index:2;}
+header {position:absolute;width:250px;height:100%;background:#414755; box-sizing:border-box; z-index:2; overflow:hidden;}
 header p.logo {margin-top:30px;margin-bottom:20px;color:#fff;text-align:center;}
 header p.ip {padding:10px;color:#fff; text-align:center;}
 header time {display:block;min-height:40px;padding:20px;color:#ccc;font-size:20px;text-align:center;}
 /*---[nav]---*/
 header nav {display:block;padding:20px;color:#fff;}
 header nav a {position:relative;display:block;padding:5px 10px;font-size:14px; }
-header nav a:hover {text-decoration:underline;}
+header nav a:hover {color:#66bfff;text-decoration:underline;}
 header nav a:after { position:absolute;right:0;content:'>';}
 header nav dl {margin-bottom:30px;}
 header nav dl dt {display:block;margin-bottom:10px;padding:10px;border-bottom:1px solid #fff;font-size:18px;}
@@ -22,4 +22,4 @@ body > article {width:100%;padding-left:250px;padding-top:100px;padding-bottom:1
 body > article > div.panel {margin:0 20px;padding:30px;background:#fff;}
 /*===[footer]===============================================*/
 footer { position:absolute;bottom:0;width:100%;padding-left:250px;background:#c4c4c4;box-sizing:border-box;text-align:center;}
-footer p.copyright {display:inline-block;padding:10px 0;font-size:12px;color:#111;text-align:center; }
+footer p.copyright {display:inline-block;padding:10px 0;font-size:11px;color:#000;letter-spacing:1px;text-align:center; }

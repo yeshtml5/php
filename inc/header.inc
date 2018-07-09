@@ -34,6 +34,7 @@
         <dl>
             <dt>api</dt>
             <dd><a href="/php/api/time.php">API::time</a></dd>
+            <dd><a href="/php/api/kakao_map.php">API::map</a></dd>
         </dl>
         <dl>
             <dt>R&D</dt>
