@@ -18,10 +18,20 @@
         <li><a href="https://opentutorials.org/course/3130" target="_blank">생활코딩 PHP</a></li>
     </ul>
     <h1>참고파일</h1>
+    <time></time>
     <ul>
         <li><p>https://material.io/design/</p></li>
+        <li><p>http://superieur-admin-templates.multipurposethemes.com/main/pages/icons_fontawesome.html/</p></li>
     </ul>
 </section>
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+            common.time("time", "time");
+        });
+    })($);
+</script>
+
 <style>
     article {margin:50px;padding:50px;border:1px solid #2b669a;}
     li {padding:10px;}

@@ -11,11 +11,12 @@
     <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/fontawesome.css"/>
     <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/basic.css"/>
     <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/common.css"/>
-
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,400">
     <!--[javascript]-->
     <script type="text/javascript" src="<?= theme(); ?>src/js/jquery.js"></script>
     <script type="text/javascript" src="<?= theme(); ?>src/js/lib.masonry.js"></script>
     <script type="text/javascript" src="<?= theme(); ?>src/js/core.js"></script>
     <script type="text/javascript" src="<?= theme(); ?>src/js/common.js"></script>
+    <script type="text/javascript" src="/php/src/js/common.js"></script>
 </head>
 <body>
