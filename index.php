@@ -5,12 +5,9 @@
     <?php
         $files = array_diff(scandir("./"), array(".", "..", "db", ".git", ".idea", ".gitignore", "README.md"));
         foreach ($files as &$key) {
-            if ($key != '.' && $key != '..') {
-                echo "<p><a href=\"index.php?$key\"><span>$key</span></a></p>";
-            }
+            echo "<p><a href=\"index.php?$key\"><span>$key</span></a></p>";
         }
     ?>
-    <?= getIP(); ?>
 </article>
 <section>
     <ul>

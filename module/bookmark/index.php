@@ -58,6 +58,8 @@
 <!--contents-->
 <article>
     <section class="bookmark-wrap">
+        <?= debug($escaped); ?>
+        <?= isMobile(); ?>
         <div class="cont">
             <div class="create-wrap">
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
