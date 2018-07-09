@@ -1,14 +1,15 @@
 /*===[common]===============================================*/
-body {position:relative;}
+html, body {height:100%;min-height:100%;}
+body {position:relative;background:#e8e8e8;}
 .thin {font-family:'Roboto';font-weight:100;}
-.regular{font-family:'Roboto';font-weight:400;}
+.regular {font-family:'Roboto';font-weight:400;}
 /*---[tesxt]---*/
 
 /*===[header]===============================================*/
-header {position:fixed;width:250px;height:100%;background:#414755; box-sizing:border-box;}
-header p.logo{margin-top:30px;margin-bottom:20px;color:#fff;text-align:center;}
+header {position:fixed;width:250px;height:100%;background:#414755; box-sizing:border-box; z-index:2;}
+header p.logo {margin-top:30px;margin-bottom:20px;color:#fff;text-align:center;}
 header p.ip {padding:10px;color:#fff; text-align:center;}
-header time {display:block;min-height:40px;padding:20px;color:#ccc;font-size:24px;text-align:center;}
+header time {display:block;min-height:40px;padding:20px;color:#ccc;font-size:20px;text-align:center;}
 /*---[nav]---*/
 header nav {display:block;padding:20px;color:#fff;}
 header nav a {position:relative;display:block;padding:5px 10px;font-size:14px; }
@@ -17,4 +18,8 @@ header nav a:after { position:absolute;right:0;content:'>';}
 header nav dl {margin-bottom:30px;}
 header nav dl dt {display:block;margin-bottom:10px;padding:10px;border-bottom:1px solid #fff;font-size:18px;}
 /*===[article]===============================================*/
-body > article {width:100%;padding-left:250px;box-sizing:border-box;}
+body > article {width:100%;padding-left:250px;padding-top:100px;padding-bottom:100px;box-sizing:border-box;}
+body > article > div.panel {margin:0 20px;padding:30px;background:#fff;}
+/*===[footer]===============================================*/
+footer { position:absolute;bottom:0;width:100%;padding-left:250px;background:#c4c4c4;box-sizing:border-box;text-align:center;}
+footer p.copyright {display:inline-block;padding:10px 0;font-size:12px;color:#111;text-align:center; }

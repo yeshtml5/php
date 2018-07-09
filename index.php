@@ -2,27 +2,14 @@
 <?= head(); ?>
 <!--contents-->
 <article>
-    <?php
-        $files = array_diff(scandir("./"), array(".", "..", "db", ".git", ".idea", ".gitignore", "README.md"));
-        foreach ($files as &$key) {
-            echo "<p><a href=\"index.php?$key\"><span>$key</span></a></p>";
-        }
-    ?>
-    <section>
-        <ul>
-            <li><a href="/php/module/bookmark">즐겨찾기</a></li>
-            <li><a href="/php/memo/" target="_blank">메모장</a></li>
-            <li><a href="https://opentutorials.org/course/3167/19600" target="_blank">https://opentutorials.org/course/3167/19600</a>
-            </li>
-            <li><a href="https://opentutorials.org/course/3130" target="_blank">생활코딩 PHP</a></li>
-        </ul>
-        <h1>참고파일</h1>
-        <time></time>
-        <ul>
-            <li><p>https://material.io/design/</p></li>
-            <li><p>http://superieur-admin-templates.multipurposethemes.com/main/pages/icons_fontawesome.html/</p></li>
-        </ul>
-    </section>
+    <div class="panel">
+        <?php
+            $files = array_diff(scandir("./"), array(".", "..", "db", ".git", ".idea", ".gitignore", "README.md"));
+            foreach ($files as &$key) {
+                echo "<p><a href=\"index.php?$key\"><span>$key</span></a></p>";
+            }
+        ?>
+    </div>
 </article>
 <!--//contents-->
 <?= footer(); ?>

@@ -36,15 +36,18 @@
             <dd><a href="/php/api/time.php">API::time</a></dd>
         </dl>
         <dl>
-            <dt>BlockChain</dt>
-            <dd><a href="https://steemit.com/kr/@twinbraid/74kjhu" target="_blank">steemit</a></dd>
+            <dt>R&D</dt>
+            <dd><a href="https://opentutorials.org/course/3130" target="_blank">PHP</a></dd>
+            <dd><a href="https://steemit.com/kr/@twinbraid/74kjhu" target="_blank">BlockChain steemit</a></dd>
         </dl>
+
         <dl>
             <dt>Useful link</dt>
             <dd><a href="https://themeforest.net/" target="_blank">themeforest.net</a></dd>
             <dd><a href="https://material.io/tools/icons/?style=baseline" target="_blank">Icons</a></dd>
             <dd><a href="https://material.io/design/" target="_blank">material designs</a></dd>
             <dd><a href="https://goo.gl/" target="_blank">goo.gl</a></dd>
+            <dd><a href="https://developers.google.com/speed/" target="_blank">google->speed</a></dd>
             <dd><a href="http://superieur-admin-templates.multipurposethemes.com/main/pages/icons_fontawesome.html" target="_blank">designs</a></dd>
         </dl>
     </nav>
@@ -52,7 +55,7 @@
 <script type="text/javascript">
     (function ($) {
         $(document).ready(function () {
-            common.time("header>time", "time");
+            common.time("header>time", "&format=m/d  h:m:s");
         });
     })($);
 </script>
