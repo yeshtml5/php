@@ -7,7 +7,6 @@
         function getPHP() {
             $_GET['width'] = '100%';
             $_GET['height'] = '600px';
-
             $_GET['level'] = '8';
             include_once(__ROOT__ . "/php/api/kakao_map.php");
         }
@@ -38,9 +37,9 @@
                     output.innerHTML = '<p>위도 : ' + latitude + '° <br>경도 : ' + longitude + '°</p>';
 
                     var img = new Image(600, 600);
-                    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=500x500&sensor=false";
+                    img.src = "https://maps.googleapis.com/maps/api/staticmap?--unsafely-treat-insecure-origin-as-secure=\"https://dev.yeshtml6.com\" &center=" + latitude + "," + longitude + "&zoom=13&size=500x500&sensor=false";
                     output.appendChild(img);
-                    window.location.href = "?mode=false&lat="+latitude+"&lon="+longitude;
+                    window.location.href = "?mode=false&lat=" + latitude + "&lon=" + longitude;
 
                 };
 
