@@ -2,7 +2,7 @@
     $date = new DateTime();
     $date->setTimezone(new DateTimeZone('UTC'));
     $date->setTimezone(new DateTimeZone('Asia/Seoul'));
-    $mode = $_GET['mode'];
+    $mode = $_GET['mode'] ? $_GET['mode'] : null;
     if (isset($_GET['format']))://자유포멧지정
         echo $date->format($_GET['format']);
     elseif ($_GET['mode'] == 'time')://시간형태

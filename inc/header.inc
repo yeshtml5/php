@@ -8,11 +8,11 @@
     <link rel="shortcut icon" type="image/gif" href="<?= theme(); ?>src/images/common/favicon.gif">
     <link rel="shortcut icon" type="image/gif" href="<?= theme(); ?>src/images/common/favicon.png">
     <!--[style]-->
-<!--    <link type="text/css" rel="stylesheet" href="--><?//= theme(); ?><!--src/css/fontawesome.css"/>-->
+    <!--    <link type="text/css" rel="stylesheet" href="--><? //= theme(); ?><!--src/css/fontawesome.css"/>-->
 
     <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/basic.css"/>
     <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/common.css"/>
-    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,400">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
     <link type="text/css" rel="stylesheet" href="/php/src/css/style.css">
     <!--[javascript]-->
     <script type="text/javascript" src="<?= theme(); ?>src/js/jquery.js"></script>
@@ -35,6 +35,7 @@
             <dt>api</dt>
             <dd><a href="/php/api/time.php">API::time</a></dd>
             <dd><a href="/php/api/kakao_map.php">API::map</a></dd>
+            <dd><a href="/php/api/geolocation.php">API::geolocation</a></dd>
         </dl>
         <dl>
             <dt>R&D</dt>
@@ -49,7 +50,8 @@
             <dd><a href="https://material.io/design/" target="_blank">material designs</a></dd>
             <dd><a href="https://goo.gl/" target="_blank">goo.gl</a></dd>
             <dd><a href="https://developers.google.com/speed/" target="_blank">google->speed</a></dd>
-            <dd><a href="http://superieur-admin-templates.multipurposethemes.com/main/pages/icons_fontawesome.html" target="_blank">designs</a></dd>
+            <dd><a href="http://superieur-admin-templates.multipurposethemes.com/main/pages/icons_fontawesome.html"
+                   target="_blank">designs</a></dd>
         </dl>
     </nav>
 </header>

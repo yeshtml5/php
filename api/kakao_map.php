@@ -1,27 +1,34 @@
 <?php
     /**
      * 참고사이트 :http://apis.map.daum.net/web/sample/
+     * 위도경도 찾기
+     * http://map.esran.com/
+     *
+     * 사용예 : http://localhost/php/api/kakao_map.php?width=400px&height=500px&lat=37.40112&lon=126.8741&level=9
      */
-    $width = (isset($_GET['width'])) ? $_GET['width'] : '800px'; //지도넓이
-    $height = (isset($_GET['height'])) ? $_GET['height'] : '600px'; //지도넓이
-    $latitude = $_GET['lat'];//위도
-    $longitude = $_GET['lng'];//경도
+    /*
+     * DEFINE
+     */
+    define('APPKEY', 'ba0ed5790f29e178b96339e338616ea1');
+    /*
+     * Variables
+     */
+    $width = isset($_GET['width']) ? $_GET['width'] : '800px'; //지도넓이
+    $height = isset($_GET['height']) ? $_GET['height'] : '600px'; //지도넓이
+    $latitude = isset($_GET['lat']) ? $_GET['lat'] : '37.565682'; //위도
+    $longitude = isset($_GET['lon']) ? $_GET['lon'] : '126.97684879999997'; //경도
+    $level = isset($_GET['level']) ? $_GET['level'] : 3; //지도레벨높이
 ?>
-
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8"/>
-    <title>Daum 지도 시작하기</title>
-</head>
 <body>
 <div id="map" style="width:<?= $width; ?>;height:<?= $height ?>;"></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ba0ed5790f29e178b96339e338616ea1"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<?= APPKEY; ?>"></script>
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
-            center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-            level: 3 // 지도의 확대 레벨
+            center: new daum.maps.LatLng(<?= $latitude;?>, <?= $longitude;?>), // 지도의 중심좌표
+            level: <?=$level;?> // 지도의 확대 레벨
         };
     var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
     // 지도를 클릭한 위치에 표출할 마커입니다
