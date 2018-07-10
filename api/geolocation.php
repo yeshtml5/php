@@ -1,7 +1,12 @@
+<?php
+/*
+ * https:// 로 해야한다.
+ * http 로 적용시 localhost는 적용되나, web상에 올릴경우 문제가 생김
+ */
+?>
 <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/php/inc/common.inc"); ?>
 <?= head(); ?>
 <!--contents-->
-
 <article>
     <?php
         function getPHP() {
@@ -37,7 +42,7 @@
                     output.innerHTML = '<p>위도 : ' + latitude + '° <br>경도 : ' + longitude + '°</p>';
 
                     var img = new Image(600, 600);
-                    img.src = "https://maps.googleapis.com/maps/api/staticmap?--unsafely-treat-insecure-origin-as-secure=\"https://dev.yeshtml6.com\" &center=" + latitude + "," + longitude + "&zoom=13&size=500x500&sensor=false";
+                    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=500x500&sensor=false";
                     output.appendChild(img);
                     window.location.href = "?mode=false&lat=" + latitude + "&lon=" + longitude;
 
