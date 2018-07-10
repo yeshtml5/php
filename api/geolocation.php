@@ -1,6 +1,7 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/php/inc/common.inc"); ?>
 <?= head(); ?>
 <!--contents-->
+
 <article>
     <?php
         function getPHP() {
