@@ -32,6 +32,10 @@
             <dd><a href="/php/module/bookmark">bookmark</a></dd>
         </dl>
         <dl>
+            <dt>tutorial</dt>
+            <dd><a href="/php/tutorial/">Tutorial</a></dd>
+        </dl>
+        <dl>
             <dt>api</dt>
             <dd><a href="/php/api/time.php">API::time</a></dd>
             <dd><a href="/php/api/kakao_map.php">API::map</a></dd>
