@@ -5,6 +5,14 @@
      * http://map.esran.com/
      *
      * 사용예 : http://localhost/php/api/kakao_map.php?width=400px&height=500px&lat=37.40112&lon=126.8741&level=9
+     * include 사용시
+    $_GET['width'] = '100%';
+    $_GET['height'] = '600px';
+    $_GET['lat'] = '37';
+    $_GET['lon'] = '127';
+    $_GET['level'] = '8';
+    include_once(__ROOT__ . "/php/api/kakao_map.php");
+     *
      */
     /*
      * DEFINE

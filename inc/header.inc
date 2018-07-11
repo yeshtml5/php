@@ -33,7 +33,7 @@
         </dl>
         <dl>
             <dt>tutorial</dt>
-            <dd><a href="/php/tutorial/">Tutorial</a></dd>
+            <dd><a href="?inc=/php/tutorial/index.php">Tutorial</a></dd>
         </dl>
         <dl>
             <dt>api</dt>
