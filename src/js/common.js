@@ -1,3 +1,22 @@
+window.addEventListener('load', function () {
+    var common = new Vue({
+        el: '#msg',
+        data: {
+            message: 'common.js'
+        },
+        method: {
+            test: function () {
+                alert('222');
+            }
+        }
+
+    });
+
+
+
+});
+
+
 var _setup = function () {
     window.common = {
         //description: php의 time()함수를 가져와서 ajax로 1초마다 가져와서 target에 적용
@@ -23,6 +42,6 @@ var _bind = function () {
 
 }
 $(document).ready(function () {
-    _setup();
-    _bind();
+    // _setup();
+    // _bind();
 });

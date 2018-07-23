@@ -14,7 +14,7 @@
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
     <link type="text/css" rel="stylesheet" href="/php/src/css/style.css">
     <!--[javascript]-->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript" src="/php/src/js/vue.js"></script>
     <script type="text/javascript" src="<?= theme(); ?>src/js/jquery.js"></script>
     <script type="text/javascript" src="<?= theme(); ?>src/js/lib.masonry.js"></script>
     <script type="text/javascript" src="<?= theme(); ?>src/js/core.js"></script>
@@ -61,9 +61,11 @@
     </nav>
 </header>
 <script type="text/javascript">
+    /*
     (function ($) {
         $(document).ready(function () {
             common.time("header>time", "&format=m/d  h:m:s");
         });
     })($);
+    */
 </script>
