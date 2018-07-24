@@ -22,15 +22,16 @@
             ?>
             <ol id="list">
                 <li v-for="todo in todos">{{todo.text}}</li>
-                <li>test</li>
                 <li v-if="Math.random() > 0.5">
                     이제 나를 볼 수 있어요
                 </li>
                 <li v-else>
                     이제는 안보입니다
                 </li>
+
             </ol>
             <div id="evtHdr">
+                <h2>{{ Date() }}</h2>
                 <button v-on:click="check($event);">버튼</button>
             </div>
         </div>
@@ -62,6 +63,7 @@
                 }
             }
         });
+
         app.todos.push({text: 'some vars'});
 
         //

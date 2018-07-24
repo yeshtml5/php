@@ -39,34 +39,26 @@
         //---
     endif;
     /*------[SELECT]--------*/
+
     $sql = "SELECT * FROM $DB_TABLE";
     $result = db_query($sql);
-
-
 ?>
 <!Doctype html>
 <html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--[script]-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
     <!--[style]-->
-    <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/fontawesome.css"/>
+    <script type="text/javascript" src="/php/src/js/vue.js"></script>
     <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/basic.css"/>
     <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/common.css"/>
     <link type="text/css" rel="stylesheet" href="style.css"/>
 </head>
 <body>
 <!--contents-->
-<?php
-
-    $db = new DB();
-
-    var_dump($db);
-?>
 <article>
     <section class="bookmark-wrap">
-        <?= debug($escaped); ?>
+        <?= debug($result); ?>
         <?= isMobile(); ?>
         <div class="cont">
             <div class="create-wrap">

@@ -10,6 +10,11 @@
     define("__ROOT__", $_SERVER['DOCUMENT_ROOT']);
     define("__URL__", "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");/*도메인으로 표시되는URL*/
     define("__PATH__", __ROOT__ . "/php");
+    /********************************************************************
+     *    class 설정
+     ********************************************************************/
+    require_once __PATH__ . "/class/DB.php";
+    //
     function root() {
         echo __ROOT__;
     }
@@ -45,11 +50,11 @@
     function console($str, $mode = "log") {
         $str = str_replace('"', '\\"', $str);
         if ($mode == "log") {
-            echo "<script>console.log('%c$str','font-size:14px;color:#111;');</script>";
+            // echo "<script>console.log('%c$str','font-size:14px;color:#111;');</script>";
         } else if ($mode == "warn") {
-            echo "<script>console.warn('%c$str','font-size:14px;color:#111;');</script>";
+            //echo "<script>console.warn('%c$str','font-size:14px;color:#111;');</script>";
         } else if ($mode == "error") {
-            echo "<script>console.error('%c$str','font-size:14px;color:#111;');</script>";
+            //echo "<script>console.error('%c$str','font-size:14px;color:#111;');</script>";
         }
     }
     /* @모바일접속환경인지체크

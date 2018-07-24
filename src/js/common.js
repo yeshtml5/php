@@ -1,5 +1,5 @@
 window.addEventListener('load', function () {
-    var common = new Vue({
+    common = new Vue({
         el: '#msg',
         data: {
             message: 'common.js'
@@ -7,11 +7,13 @@ window.addEventListener('load', function () {
         method: {
             test: function () {
                 alert('222');
+            },
+            log: function () {
+                console.log('test');
             }
         }
 
     });
-
 
 
 });
