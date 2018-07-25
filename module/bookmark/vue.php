@@ -7,7 +7,6 @@
     <!--[script]-->
     <!--[style]-->
     <script type="text/javascript" src="/php/src/js/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/basic.css"/>
     <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/common.css"/>
     <link type="text/css" rel="stylesheet" href="style.css"/>
@@ -16,23 +15,32 @@
 <!--contents-->
 <article>
     <section id="vue" class="bookmark-wrap">
-        <dl v-for="(item,index) in items">{{index}} {{item.id}}
-            <dt>{{item.memo}}</dt>
-            <dd>{{item.favorite}}</dd>
+        <dl :data-index="index" :data-id="item.id" :class="{'on':toggle}" v-for="(item,index) in items">
+            <dt v-on:click="check($event,index)">{{index}}</dt>
+            <dd><a :href="item.url"><h1>{{item.memo}}</h1></a></dd>
         </dl>
     </section>
 </article>
 <!--//contents-->
+<style>
+    section dl > * {display:inline-block;}
+    section dl dt {width:50px;color:#ff0000;font-size:20px; }
+</style>
 <script type="text/javascript">
-    var _url = 'http://localhost/php/module/bookmark/api/read.php';
-    var _model = {};
-    var app = new Vue({
+    let _url = 'http://localhost/php/module/bookmark/api/read.php';
+    let app = new Vue({
         el: "#vue",
         data: {
+            toggle: [],
             items: []
         },
         mounted: function () {
-            var _self = this;
+            let _self = this;
+            fetch(_url).then(res => res.json()).then(function (data) {
+                _self.items = data;
+            });
+            /*
+            //----------
             axios.get(_url)
                 .then(function (response) {
                     _self.items = response.data;
@@ -41,8 +49,18 @@
                 .catch(function (error) {
                     console.log(error);
                 });
+                */
         },
-        methods: {}
+        methods: {
+            check: function (event, index) {
+                // var element = event.target.parentElement.parentElement.parentElement.getAttribute('data-index');
+                var element = event.target.parentElement;
+
+                this.toggle[index] = !this.toggle[index];
+
+                console.log(this.toggle[index]);
+            }
+        }
     });
     // app.getList(_url);
 </script>
