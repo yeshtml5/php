@@ -1,48 +1,5 @@
 <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/php/inc/common.inc"); ?>
-<?php
-    /*------[config]--------*/
-    $DB_TABLE = 'php_bookmark';
-    $submit_label = 'INSERT';
-    $escaped['memo'] = null;
-    $escaped['url'] = null;
-    /*------[function]--------*/
-    function reload() {
-        echo "<script>window.location = \"/php/module/bookmark/\";</script>";
-    }
-    /*------[logic]--------*/
-    if (isset($_POST['submit']) && $_POST['submit'] == "INSERT"):/*------[INSERT]--------*/
-        $now = date('Y-m-d H:i:s');
-        $escaped['memo'] = htmlspecialchars($_POST['memo']);
-        $escaped['url'] = htmlspecialchars($_POST['url']);
-        $sql = "INSERT INTO $DB_TABLE (`id`,`memo`,`url`,`date`,`favorite`) VALUES (null, '{$escaped['memo']}', '{$escaped['url']}', '{$now}', 'N')";
-        $result = db_query($sql);
-        reload();
-    elseif (isset($_POST['submit']) && $_POST['submit'] == "DELETE"):/*------[DELETE]--------*/
-        $sql = "DELETE FROM $DB_TABLE WHERE `php_bookmark`.`id` = '{$_POST['row_id']}'";
-        $result = db_query($sql);
-        reload();
-    elseif (isset($_POST['submit']) && $_POST['submit'] == "MODIFY"):/*------[MODIFY]--------*/
-        //---
-        $submit_label = 'UPDATE';
-        $sql = "SELECT * FROM $DB_TABLE WHERE id={$_POST['row_id']}";
-        $result = db_query($sql);
-        $row = mysqli_fetch_array($result);
-        $escaped['memo'] = htmlspecialchars($row['memo']);
-        $escaped['url'] = htmlspecialchars($row['url']);
-        $escaped['favorite'] = htmlspecialchars($row['favorite']);
-    elseif (isset($_POST['submit']) && $_POST['submit'] == "UPDATE"):/*------[UPDATE]--------*/
-        $now = date('Y-m-d H:i:s');
-        $sql = "UPDATE $DB_TABLE SET `memo` = '{$_POST['memo']}', `url` = '{$_POST['url']}',`favorite` = '{$_POST['row_checked']}',`date` = '{$now}' WHERE id='{$_POST['row_id']}'";
-        $result = db_query($sql);
-        reload();
-    else:
-        //---
-    endif;
-    /*------[SELECT]--------*/
 
-    $sql = "SELECT * FROM $DB_TABLE";
-    $result = db_query($sql);
-?>
 <!Doctype html>
 <html>
 <head>
@@ -50,6 +7,7 @@
     <!--[script]-->
     <!--[style]-->
     <script type="text/javascript" src="/php/src/js/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/basic.css"/>
     <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/common.css"/>
     <link type="text/css" rel="stylesheet" href="style.css"/>
@@ -57,46 +15,36 @@
 <body>
 <!--contents-->
 <article>
-    <section class="bookmark-wrap">
-        <?= debug($result); ?>
-        <?= isMobile(); ?>
-        <div class="cont">
-            <div class="create-wrap">
-                <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
-                    <?php if (isset($row)) : ?>
-                        <input type="hidden" name="row_id" value="<?= $row['id']; ?>">
-                        <input type="checkbox" name="row_checked" <?php if ($row['favorite'] == "on") {
-                            echo "checked = 'checked'";
-                        } ?> >
-                    <?php endif; ?>
-                    <input type="text" name="memo" placeholder="memo" value="<?= $escaped['memo']; ?>">
-                    <input type="text" name="url" placeholder="url" value="<?= $escaped['url']; ?>">
-                    <input type="submit" name="submit" value="<?= $submit_label; ?>">
-                </form>
-            </div>
-            <div class="list-wrap">
-                <?php while ($row = mysqli_fetch_array($result)): ?>
-                    <dl>
-                        <dt><input type="checkbox" name="checked"
-                                   value="<?= $row['favorite'] ?>" <?php if ($row['favorite'] == "on") {
-                                echo "checked = 'checked'";
-                            } ?> ></dt>
-                        <dd>
-                            <a href="<?= $row['url']; ?>" target="_blank"><?= $row['memo']; ?></a>
-                        </dd>
-                        <dd class="btn-wrap">
-                            <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
-                                <input type="hidden" name="row_id" value="<?= $row['id']; ?>">
-                                <input type="submit" name="submit" value="DELETE">
-                                <input type="submit" name="submit" value="MODIFY">
-                            </form>
-                        </dd>
-                    </dl>
-                <?php endwhile; ?>
-            </div>
-        </div>
+    <section id="vue" class="bookmark-wrap">
+        <dl v-for="(item,index) in items">{{index}} {{item.id}}
+            <dt>{{item.memo}}</dt>
+            <dd>{{item.favorite}}</dd>
+        </dl>
     </section>
 </article>
 <!--//contents-->
+<script type="text/javascript">
+    var _url = 'http://localhost/php/module/bookmark/api/read.php';
+    var _model = {};
+    var app = new Vue({
+        el: "#vue",
+        data: {
+            items: []
+        },
+        mounted: function () {
+            var _self = this;
+            axios.get(_url)
+                .then(function (response) {
+                    _self.items = response.data;
+                    console.log(app.items);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        methods: {}
+    });
+    // app.getList(_url);
+</script>
 </body>
 </html>

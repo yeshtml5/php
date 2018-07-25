@@ -41,8 +41,6 @@
     /*------[SELECT]--------*/
     $sql = "SELECT * FROM $DB_TABLE";
     $result = db_query($sql);
-
-
 ?>
 <!Doctype html>
 <html>
@@ -57,15 +55,15 @@
     <link type="text/css" rel="stylesheet" href="style.css"/>
 </head>
 <body>
-<!--contents-->
-<?php
-
-    $db = new DB();
-
-    var_dump($db);
-?>
 <article>
-    <section class="bookmark-wrap">
+    <?php
+        $url = "http://localhost/php/module/bookmark/api/read.php";
+        $data = file_get_contents($url);
+        echo $data;
+
+    ?>
+
+    <section class="bookmark-wrap none">
         <?= debug($escaped); ?>
         <?= isMobile(); ?>
         <div class="cont">
