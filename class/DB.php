@@ -35,7 +35,8 @@
             }
         }
 
-        /*
+        /**
+         *
          *
          */
         public function query($_query) {
@@ -43,7 +44,8 @@
             return $this->result;
         }
 
-        /*
+        /**
+         *
          *
          */
         public function getJson() {
@@ -51,11 +53,11 @@
             while ($row = mysqli_fetch_assoc($this->result)) {
                 $infoArry[] = $row;
             }
-            //echo json_encode($infoArry);
             return json_encode($infoArry);
         }
 
-        /*
+        /**
+         *
          *
          */
         private function encrypt($string, $key) {
@@ -69,7 +71,8 @@
             return base64_encode($result);
         }
 
-        /*
+        /**
+         *
          *
          */
         private function decrypt($string, $key) {

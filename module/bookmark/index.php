@@ -26,7 +26,7 @@
         //---
         $submit_label = 'UPDATE';
         $sql = "SELECT * FROM $DB_TABLE WHERE id={$_POST['row_id']}";
-        $result = db_query($sql);
+        $result = $db->query($sql);
         $row = mysqli_fetch_array($result);
         $escaped['memo'] = htmlspecialchars($row['memo']);
         $escaped['url'] = htmlspecialchars($row['url']);
@@ -41,7 +41,7 @@
     endif;
     /*------[SELECT]--------*/
     $sql = "SELECT * FROM $DB_TABLE";
-    $db->query($sql);
+    $result = $db->query($sql);
 ?>
 <!Doctype html>
 <html>
@@ -57,15 +57,8 @@
 </head>
 <body>
 <article>
-    <?php
-        $url = "http://localhost/php/module/bookmark/api/read.php";
-        $data = file_get_contents($url);
-        echo $data;
-    ?>
-
     <section class="bookmark-wrap none">
-        <?= debug($escaped); ?>
-        <?= isMobile(); ?>
+
         <div class="cont">
             <div class="create-wrap">
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
