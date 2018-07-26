@@ -1,6 +1,13 @@
 <?php
+    /**
+     * Created by wanhwi.son
+     * Email: yeshtml5@gmail.com
+     * Date: 2018. 7. 26.
+     * Time: AM 10:18
+     */
     class DB {
-        private $database;
+        //DB connected
+        private $connect;
         private $result;
 
         public function __construct() {
@@ -16,20 +23,23 @@
             echo $decrypted;
             */
             if ($_SERVER['HTTP_HOST'] === "localhost") {
-                $host = decrypt("5t7Y29zh2aFjkdLc", $key);
+                $host = $this->decrypt("5t7Y29zh2aFjkdLc", $key);
             } else {
                 $host = 'localhost';
             }
             $user = $this->decrypt("5t7Y29zh2Q==", $key);
             $pass_word = $this->decrypt("0ObRo8vh2Zw=", $key);
-            $this->database = mysqli_connect($host, $user, $pass_word, $user);
+            $this->connect = mysqli_connect($host, $user, $pass_word, $user);
+            if (mysqli_connect_errno()) {
+                throw new Exception(mysqli_connect_error(), mysqli_connect_errno());
+            }
         }
 
         /*
          *
          */
         public function query($_query) {
-            $this->result = mysqli_query($this->database, $_query);
+            $this->result = mysqli_query($this->connect, $_query);
             return $this->result;
         }
 

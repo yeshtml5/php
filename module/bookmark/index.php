@@ -9,17 +9,18 @@
     function reload() {
         echo "<script>window.location = \"/php/module/bookmark/\";</script>";
     }
+    $db = new DB();
     /*------[logic]--------*/
     if (isset($_POST['submit']) && $_POST['submit'] == "INSERT"):/*------[INSERT]--------*/
         $now = date('Y-m-d H:i:s');
         $escaped['memo'] = htmlspecialchars($_POST['memo']);
         $escaped['url'] = htmlspecialchars($_POST['url']);
         $sql = "INSERT INTO $DB_TABLE (`id`,`memo`,`url`,`date`,`favorite`) VALUES (null, '{$escaped['memo']}', '{$escaped['url']}', '{$now}', 'N')";
-        $result = db_query($sql);
+        $result = $db->query($sql);
         reload();
     elseif (isset($_POST['submit']) && $_POST['submit'] == "DELETE"):/*------[DELETE]--------*/
         $sql = "DELETE FROM $DB_TABLE WHERE `php_bookmark`.`id` = '{$_POST['row_id']}'";
-        $result = db_query($sql);
+        $result = $db->query($sql);
         reload();
     elseif (isset($_POST['submit']) && $_POST['submit'] == "MODIFY"):/*------[MODIFY]--------*/
         //---
@@ -33,14 +34,14 @@
     elseif (isset($_POST['submit']) && $_POST['submit'] == "UPDATE"):/*------[UPDATE]--------*/
         $now = date('Y-m-d H:i:s');
         $sql = "UPDATE $DB_TABLE SET `memo` = '{$_POST['memo']}', `url` = '{$_POST['url']}',`favorite` = '{$_POST['row_checked']}',`date` = '{$now}' WHERE id='{$_POST['row_id']}'";
-        $result = db_query($sql);
+        $result = $db->query($sql);
         reload();
     else:
         //---
     endif;
     /*------[SELECT]--------*/
     $sql = "SELECT * FROM $DB_TABLE";
-    $result = db_query($sql);
+    $db->query($sql);
 ?>
 <!Doctype html>
 <html>
@@ -49,9 +50,9 @@
     <!--[script]-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
     <!--[style]-->
-    <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/fontawesome.css"/>
-    <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/basic.css"/>
-    <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/common.css"/>
+    <link type="text/css" rel="stylesheet" href="<?= __THEME__; ?>src/css/fontawesome.css"/>
+    <link type="text/css" rel="stylesheet" href="<?= __THEME__; ?>src/css/basic.css"/>
+    <link type="text/css" rel="stylesheet" href="<?= __THEME__; ?>src/css/common.css"/>
     <link type="text/css" rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -60,7 +61,6 @@
         $url = "http://localhost/php/module/bookmark/api/read.php";
         $data = file_get_contents($url);
         echo $data;
-
     ?>
 
     <section class="bookmark-wrap none">

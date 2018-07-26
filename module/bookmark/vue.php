@@ -7,8 +7,8 @@
     <!--[script]-->
     <!--[style]-->
     <script type="text/javascript" src="/php/src/js/vue.js"></script>
-    <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/basic.css"/>
-    <link type="text/css" rel="stylesheet" href="<?= theme(); ?>src/css/common.css"/>
+    <link type="text/css" rel="stylesheet" href="<?= __THEME__; ?>src/css/basic.css"/>
+    <link type="text/css" rel="stylesheet" href="<?= __THEME__; ?>src/css/common.css"/>
     <link type="text/css" rel="stylesheet" href="style.css"/>
 </head>
 <body>
