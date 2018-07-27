@@ -56,9 +56,9 @@
                 // var element = event.target.parentElement.parentElement.parentElement.getAttribute('data-index');
                 var element = event.target.parentElement;
 
-                this.toggle[index] = !this.toggle[index];
+                this.toggle = !this.toggle;
 
-                console.log(this.toggle[index]);
+                console.log(this.toggle);
             }
         }
     });
