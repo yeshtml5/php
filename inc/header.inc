@@ -7,6 +7,7 @@
     <title>DEV.YESHTML5.COM</title>
     <link rel="shortcut icon" type="image/gif" href="<?= __THEME__; ?>src/images/common/favicon.gif">
     <link rel="shortcut icon" type="image/gif" href="<?= __THEME__; ?>src/images/common/favicon.png">
+<!--    <link rel="apple-touch-icon" sizes="180x180" href="https://arist.io/apple-touch-icon.png">-->
     <!--[style]-->
     <!--    <link type="text/css" rel="stylesheet" href="--><? //= __THEME__; ?><!--src/css/fontawesome.css"/>-->
     <link type="text/css" rel="stylesheet" href="<?= __THEME__; ?>src/css/basic.css"/>
@@ -37,6 +38,7 @@
         </dl>
         <dl>
             <dt>api</dt>
+            <dd><a href="?inc=/php/api/coinmarketcap.php">API::coinmarketcap</a></dd>
             <dd><a href="/php/api/time.php">API::time</a></dd>
             <dd><a href="/php/api/kakao_map.php">API::map</a></dd>
             <dd><a href="/php/api/geolocation.php">API::geolocation</a></dd>

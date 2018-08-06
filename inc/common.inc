@@ -20,11 +20,11 @@
      *  function
      */
     function debug($var) {
-        Util . debugger($var);
+        Util::debugger($var);
     }
     //console 출력
     function console($str, $mode = "log") {
-        Util . console($str, $mode = "log");
+        Util::console($str, $mode = "log");
     }
     /**
      *  layout

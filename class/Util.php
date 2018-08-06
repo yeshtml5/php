@@ -6,9 +6,6 @@
      * Time: AM 10:18
      */
     class Util {
-        public function __construct() {
-        }
-
         /**
          * console.log execute from condition
          */

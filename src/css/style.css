@@ -1,5 +1,5 @@
 /*===[common]===============================================*/
-html, body {height:100%;min-height:100%;}
+html, body {}
 body {position:relative;background:#e8e8e8;}
 .thin {font-family:'Roboto';font-weight:100;}
 .light {font-family:'Roboto';font-weight:300;}
@@ -22,5 +22,5 @@ header nav dl dt {display:block;margin-bottom:10px;padding:10px;border-bottom:1p
 body > article {position:relative;width:100%;padding-top:20px;padding-left:250px;box-sizing:border-box;}
 body > article > div.panel {margin-left:20px;margin-right:20px;padding:30px;background:#fff;}
 /*===[footer]===============================================*/
-footer { position:absolute;bottom:0;width:100%;padding-left:250px;background:#c4c4c4;box-sizing:border-box;text-align:center;}
+footer { position:relative;bottom:0;width:100%;padding-left:250px;background:#c4c4c4;box-sizing:border-box;text-align:center;}
 footer p.copyright {display:inline-block;padding:10px 0;font-size:11px;color:#000;letter-spacing:1px;text-align:center; }
