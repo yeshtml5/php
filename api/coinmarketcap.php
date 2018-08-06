@@ -1,4 +1,9 @@
 <?php
+    /*
+     * API 통신가능하게:
+     */
+    ini_set("allow_url_fopen", 1);
+
     $url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
     $api_key = "CMC_PRO_API_KEY=9e21ab75-110b-41ce-9fb7-9b7600735331";
     $option = "start=1&limit=200";
